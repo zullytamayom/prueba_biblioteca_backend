@@ -1,0 +1,21 @@
+meta {
+  name: Crear Libro
+  type: http
+  seq: 2
+}
+
+post {
+  url: http://localhost:8080/api/libros
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "titulo": "Zack y Mía",
+    "autor": "No recuerdo",
+    "isbn": "97803074747891",
+    "edicion":"decimo segunda",
+    "fechaPublicacion":"2026-12-12"
+  }
+}

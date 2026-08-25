@@ -1,0 +1,16 @@
+meta {
+  name: Listar Libros
+  type: http
+  seq: 3
+}
+
+get {
+  url: http://localhost:8080/api/libros?page=0&size=10
+  body: none
+  auth: none
+}
+
+params:query {
+  page: 0
+  size: 10
+}

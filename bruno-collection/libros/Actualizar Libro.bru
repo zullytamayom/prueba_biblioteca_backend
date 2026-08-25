@@ -1,0 +1,21 @@
+meta {
+  name: Actualizar Libro
+  type: http
+  seq: 4
+}
+
+put {
+  url: http://localhost:8080/api/libros/1
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "titulo": "Zack y Mía",
+    "autor": "No recuerdo",
+    "isbn": "9780307474732",
+    "edicion":"decimo segunda",
+    "fecha_publicacion":"2026-12-12"
+  }
+}
