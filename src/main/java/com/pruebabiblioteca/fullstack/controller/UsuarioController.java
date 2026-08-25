@@ -5,9 +5,7 @@ import com.pruebabiblioteca.fullstack.service.UsuarioService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/usuarios")
@@ -21,7 +19,7 @@ public class UsuarioController {
 
     @PostMapping
     public ResponseEntity<Usuario> crear(@RequestBody Usuario usuario){
-        Usuario nuevoUsuario = usuarioService.save(usuario);
+        Usuario nuevoUsuario = usuarioService.crearUsuario(usuario);
         return ResponseEntity.status(HttpStatus.CREATED).body(nuevoUsuario);
 
     }
@@ -34,8 +32,9 @@ public class UsuarioController {
 
     @GetMapping("/{id}")
     public ResponseEntity<Usuario> consultarUsuarioPorId(@PathVariable Long id) {
-        Optional<Usuario> usuario = usuarioService.usuarioById(id);
-        return ResponseEntity.ok(usuario.orElse(null));
+        return usuarioService.usuarioById(id)
+                .map(ResponseEntity::ok)
+                .orElseGet(() -> ResponseEntity.notFound().build());
     }
     @PutMapping("/{id}")
     public ResponseEntity<?> actualizarUsuario(@PathVariable Long id, @RequestBody Usuario usuarioDetalles) {

@@ -18,7 +18,7 @@ public class UsuarioService {
     }
 
     @Transactional
-    public Usuario save(Usuario usuario) {
+    public Usuario crearUsuario(Usuario usuario) {
         return usuarioRepository.save(usuario);
     }
 
