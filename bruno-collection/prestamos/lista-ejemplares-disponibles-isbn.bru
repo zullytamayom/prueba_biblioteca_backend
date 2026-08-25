@@ -1,0 +1,11 @@
+meta {
+  name: Listar Ejemplares Disponibles por ISBN
+  type: http
+  seq: 3
+}
+
+get {
+  url: http://localhost:8080/api/prestamos/ejemplares-disponibles?isbn=9780307474728
+  body: none
+  auth: none
+}

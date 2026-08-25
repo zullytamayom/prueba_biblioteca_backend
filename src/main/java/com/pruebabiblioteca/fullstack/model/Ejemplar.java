@@ -15,10 +15,15 @@ public class Ejemplar {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     @Column(name = "codigo_ejemplar", nullable = false, unique = true)
     private String codigoEjemplar;
 
-    @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
+    @Column(name = "estado", nullable = false)
+    private EstadoEjemplar estado = EstadoEjemplar.DISPONIBLE;
+
+    @Column(name = "disponible", nullable = false)
     private Boolean disponible = true;
 
     @ManyToOne(fetch = FetchType.LAZY)

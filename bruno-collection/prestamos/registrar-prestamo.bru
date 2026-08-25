@@ -1,0 +1,19 @@
+meta {
+  name: Registrar Prestamo
+  type: http
+  seq: 1
+}
+
+post {
+  url: http://localhost:8080/api/prestamos
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "usuarioId": 5,
+    "ejemplarId": 5,
+    "diasPrestamo": 7
+  }
+}

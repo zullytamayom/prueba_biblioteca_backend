@@ -1,0 +1,18 @@
+meta {
+  name: Crear Ejemplar
+  type: http
+  seq: 1
+}
+
+post {
+  url: http://localhost:8080/api/ejemplares
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "codigoEjemplar": "EJ-9780307474728-001",
+    "libroId": 3
+  }
+}
