@@ -36,7 +36,6 @@ public class LibroService {
         return libroRepository.findById(id)
                 .map(libroExistente->
                 {
-                   libroExistente.setIdLibro(DatosActualizados.getIdLibro());
                    libroExistente.setEdicion(DatosActualizados.getEdicion());
                    libroExistente.setAutor(DatosActualizados.getAutor());
                    libroExistente.setFechaPublicacion(DatosActualizados.getFechaPublicacion());

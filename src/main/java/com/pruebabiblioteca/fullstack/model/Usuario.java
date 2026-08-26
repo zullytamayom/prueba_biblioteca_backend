@@ -14,7 +14,7 @@ import java.time.LocalDate;
 @Entity
 @NoArgsConstructor
 @Table(name = "usuarios")
-@SQLDelete(sql = "UPDATE usuarios SET activo = false WHERE id = ?")
+@SQLDelete(sql = "UPDATE usuarios SET activo = false WHERE id_usuario = ?")
 @SQLRestriction("activo = true")
 public class Usuario {
 

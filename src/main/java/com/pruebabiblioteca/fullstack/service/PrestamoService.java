@@ -27,7 +27,7 @@ public class PrestamoService {
     @Transactional
     public Prestamo registrarPrestamo(Long usuarioId, Long ejemplarId, int diasPrestamo) {
 
-        boolean tienePrestamoActivo = prestamoRepository.existsByUsuarioIdAndEstadoPrestamoIn(
+        boolean tienePrestamoActivo = prestamoRepository.existsByUsuarioIdUsuarioAndEstadoPrestamoIn(
                 usuarioId, List.of(EstadoPrestamo.ACTIVO, EstadoPrestamo.VENCIDO)
         );
         if (tienePrestamoActivo) {
@@ -57,13 +57,13 @@ public class PrestamoService {
         return prestamoRepository.save(prestamo);
     }
     public List<Prestamo> listarPorUsuario(Long usuarioId) {
-        List<Prestamo> prestamos = prestamoRepository.findByUsuarioId(usuarioId);
+        List<Prestamo> prestamos = prestamoRepository.findByUsuarioIdUsuario(usuarioId);
         prestamos.forEach(this::actualizarEstado);
         return prestamos;
     }
 
     public List<Prestamo> listarPorLibro(Long libroId) {
-        List<Prestamo> prestamos = prestamoRepository.findByEjemplarId(libroId);
+        List<Prestamo> prestamos = prestamoRepository.findByEjemplarLibroIdLibro(libroId);
         prestamos.forEach(this::actualizarEstado);
         return prestamos;
     }

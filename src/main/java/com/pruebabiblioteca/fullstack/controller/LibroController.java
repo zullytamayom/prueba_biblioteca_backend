@@ -33,7 +33,7 @@ public class LibroController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Libro> obtenerLibroPorId(Long id){
+    public ResponseEntity<Libro> obtenerLibroPorId(@PathVariable("id") Long id){
         return libroService.libroById(id)
                 .map(ResponseEntity::ok)
                 .orElseGet(() -> ResponseEntity.notFound().build());

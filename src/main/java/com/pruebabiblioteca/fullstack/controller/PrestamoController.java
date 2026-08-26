@@ -52,8 +52,4 @@ public class PrestamoController {
         return ResponseEntity.ok(respuestas);
     }
 
-    @GetMapping("/ejemplares-disponibles")
-    public ResponseEntity<List<Ejemplar>> listarEjemplaresDisponibles(@RequestParam String isbn) {
-        return ResponseEntity.ok(prestamoService.listarEjemplaresDisponibles(isbn));
-    }
 }

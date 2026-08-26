@@ -23,3 +23,45 @@ La aplicación utiliza las siguientes variables configuradas en el entorno o en 
 1. Clonar el repositorio:
    ```bash
    git clone https://github.com/zullytamayom/prueba_biblioteca_backend.git
+   cd fullstack
+   ```
+
+2. Iniciar la aplicación con Docker Compose:
+   ```bash
+   docker-compose up -d
+   ```
+
+3. Verificar que los servicios estén corriendo:
+   ```bash
+   docker-compose ps
+   ```
+
+4. Ver logs de la API:
+   ```bash
+   docker-compose logs -f api
+   ```
+
+5. La API estará disponible en: http://localhost:8080
+
+6. Para detener la aplicación:
+   ```bash
+   docker-compose down
+   ```
+
+7. Para reiniciar la aplicación:
+   ```bash
+   docker-compose restart
+   ```
+
+8. Para ver los logs de la base de datos:
+   ```bash
+   docker-compose logs -f db
+   ```
+
+## Generación de Archivo .dump
+
+Una vez la base de datos esté corriendo y tenga datos de prueba, generar el dump:
+
+```bash
+docker exec biblioteca-db pg_dump -U postgres biblioteca_db > init-db/01-init.dump
+```

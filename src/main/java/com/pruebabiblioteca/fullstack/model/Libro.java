@@ -19,7 +19,7 @@ import java.util.List;
 @NoArgsConstructor
 @Entity
 @Table(name="libros")
-@SQLDelete(sql = "UPDATE libros SET activo = false WHERE id = ?")
+@SQLDelete(sql = "UPDATE libros SET activo = false WHERE id_libro = ?")
 @SQLRestriction("activo = true")
 public class Libro {
 

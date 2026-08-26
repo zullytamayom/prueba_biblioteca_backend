@@ -5,21 +5,23 @@ import com.pruebabiblioteca.fullstack.dto.EjemplarRequest;
 import com.pruebabiblioteca.fullstack.dto.EjemplarResponse;
 import com.pruebabiblioteca.fullstack.model.Ejemplar;
 import com.pruebabiblioteca.fullstack.service.EjemplarService;
+import com.pruebabiblioteca.fullstack.service.PrestamoService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/ejemplares")
 public class EjemplarController {
 
     private final EjemplarService ejemplarService;
+    private final PrestamoService prestamoService;
 
-    public EjemplarController(EjemplarService ejemplarService) {
+    public EjemplarController(EjemplarService ejemplarService, PrestamoService prestamoService) {
         this.ejemplarService = ejemplarService;
+        this.prestamoService = prestamoService;
     }
 
     @PostMapping
@@ -34,4 +36,15 @@ public class EjemplarController {
             return ResponseEntity.badRequest().body(e.getMessage());
         }
     }
+
+    @GetMapping("/disponibles")
+    public ResponseEntity<List<EjemplarResponse>> listarEjemplaresDisponibles(@RequestParam String isbn) {
+        List<EjemplarResponse> respuestas = prestamoService.listarEjemplaresDisponibles(isbn)
+                .stream()
+                .map(EjemplarResponse::fromEntity)
+                .toList();
+        return ResponseEntity.ok(respuestas);
+    }
+
+
 }
