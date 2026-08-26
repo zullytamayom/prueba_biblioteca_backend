@@ -16,12 +16,12 @@ public class EjemplarResponse {
 
     public static EjemplarResponse fromEntity(Ejemplar ejemplar) {
         EjemplarResponse dto = new EjemplarResponse();
-        dto.setId(ejemplar.getId());
+        dto.setId(ejemplar.getIdEjemplares());
         dto.setCodigoInventario(ejemplar.getCodigoEjemplar());
         dto.setEstado(ejemplar.getEstado());
 
         if (ejemplar.getLibro() != null) {
-            dto.setLibroId(ejemplar.getLibro().getId());
+            dto.setLibroId(ejemplar.getLibro().getIdLibro());
             dto.setTituloLibro(ejemplar.getLibro().getTitulo());
         }
 

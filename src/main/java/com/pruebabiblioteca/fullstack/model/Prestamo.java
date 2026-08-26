@@ -17,7 +17,8 @@ import java.time.LocalDate;
 public class Prestamo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @Column(name = "id_prestamo")
+    private Long idPrestamo;
 
     private LocalDate fechaPrestamo;
     private LocalDate fechaDevolucion;

@@ -14,7 +14,8 @@ public class Ejemplar {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @Column(name = "id_ejemplar")
+    private Long idEjemplares;
 
     @Column(name = "codigo_ejemplar", nullable = false, unique = true)
     private String codigoEjemplar;
@@ -22,9 +23,6 @@ public class Ejemplar {
     @Enumerated(EnumType.STRING)
     @Column(name = "estado", nullable = false)
     private EstadoEjemplar estado = EstadoEjemplar.DISPONIBLE;
-
-    @Column(name = "disponible", nullable = false)
-    private Boolean disponible = true;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "libro_id", nullable = false)

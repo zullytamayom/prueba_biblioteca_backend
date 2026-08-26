@@ -24,8 +24,7 @@ public class EjemplarService {
         Ejemplar ejemplar = new Ejemplar();
         ejemplar.setCodigoEjemplar(codigoEjemplar);
         ejemplar.setEstado(EstadoEjemplar.DISPONIBLE);
-        ejemplar.setDisponible(true);
-        ejemplar.setLibro(libro);;
+        ejemplar.setLibro(libro);
 
         return ejemplarRepository.save(ejemplar);
     }

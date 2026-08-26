@@ -10,6 +10,7 @@ import org.hibernate.annotations.SQLRestriction;
 
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -24,7 +25,8 @@ public class Libro {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @Column(name = "id_libro")
+    private Long idLibro;
     @Column(nullable = false)
     private String titulo;
 
@@ -40,7 +42,7 @@ public class Libro {
 
     @OneToMany(mappedBy = "libro", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonIgnore
-    private List<Ejemplar> ejemplares;
+    private List<Ejemplar> ejemplares = new ArrayList<>();
 
     @Column(nullable = false)
     private boolean activo = true;
